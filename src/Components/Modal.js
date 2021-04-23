@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ModalDisplay = styled.div`
   z-index: 999;
@@ -30,15 +31,23 @@ const Message = styled.div`
     align-self: flex-end;
     padding: 50px;
     font-size: 250px;
+    text-decoration: underline;
   }
 `
 
 const CloseButton = styled.button`
   all: unset;
+  cursor: pointer;
   color: white;
   position: absolute;
   right: 5%;
   top: 5%;
+  padding: 5px;
+  border-radius: 25px;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
 `
 
 const Modal = ({drink, onClick}) =>(
@@ -53,5 +62,10 @@ const Modal = ({drink, onClick}) =>(
     </Message>
   </ModalDisplay>
 )
+
+Modal.prototype = {
+  drink: PropTypes.object,
+  onClick: PropTypes.func,
+}
 
 export default Modal

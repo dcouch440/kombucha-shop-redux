@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const KombuchaPage = styled.div`
@@ -54,7 +55,7 @@ const Kombucha = ({kombuchas}) => {
   const [show, setShow] = useState('');
 
   const handleClick = (id) => {
-    setShow(id);
+    id&& setShow(id);
     setModal(prev => !prev);
   }
 
@@ -73,7 +74,7 @@ const Kombucha = ({kombuchas}) => {
           <Drinks>
             {kombuchaDisplay}
           </Drinks>
-          {modal && <Modal drink={ displayDrink() } />}
+          {modal && <Modal drink={ displayDrink() } onClick={handleClick} />}
         </div>
       </KombuchaPage>
     </>

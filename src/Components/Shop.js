@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Kombucha from './Kombucha';
+import DrinkForm from './DrinkForm';
 import { kombuchaMachine } from '../stock/stock-factory';
+import { Switch, Route } from 'react-router-dom';
 
 
 class Shop extends Component {
@@ -13,10 +15,25 @@ class Shop extends Component {
     };
   }
 
+  getFormValues = (newDrink) => {
+    this.setState(prev => ({
+      ...prev,
+      drinks: [...prev.drinks, ...newDrink]
+    }))
+  }
+
   render()
   {
+    console.log(this.state.drinks);
     return(
-      <Kombucha kombuchas={this.state.drinks} />
+      <Switch>
+        <Route exact path={'/drinks'}>
+          <Kombucha kombuchas={this.state.drinks} />
+        </Route>
+        <Route exact path={'/drinks/new'}>
+          <DrinkForm getFormValues={this.getFormValues} />
+        </Route>
+      </Switch>
     )
   }
 }
