@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Kombucha from './Kombucha';
 import { kombuchaMachine } from '../stock/stock-factory';
 
 
@@ -7,13 +8,15 @@ class Shop extends Component {
   {
     super(props)
     this.initialState = kombuchaMachine(6);
-    this.state = this.initialState;
+    this.state = {
+      drinks: this.initialState
+    };
   }
 
   render()
   {
     return(
-      <h1>Hi</h1>
+      <Kombucha kombuchas={this.state.drinks} />
     )
   }
 }
