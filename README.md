@@ -1,4 +1,24 @@
-# Getting Started with Create React App
+# `Kombucha Shop`
+
+### A Shop For Kombucha!
+<!-- To Do
+  Update List of tech
+  create list for components
+ -->
+## `Date created`
+#### 4/23/2021
+
+***
+## `About this App`
+- This is a week 2 React Project while attending school at Epicodus
+- This project is created to explore the fundamentals of passing props down while using prop types.
+- Users can see unique data for each drink and add new entries.
+***
+### `Technology Used:`
+
+* React `17.0.2`
+* Styled-Components
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
