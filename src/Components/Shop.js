@@ -24,13 +24,25 @@ class Shop extends Component
     }))
   }
 
+  handleStockRemove = (drink) => {
+    console.log(drink)
+    const findDrink = (find) => find.id === drink
+    const index = this.state.drinks.findIndex(findDrink)
+    this.setState(prev => ({
+      ...prev,
+      drinks: [
+        ...prev.drinks,
+        prev.drinks[index] = prev.drinks[index].stock -= 1
+      ]
+    }))
+  }
+
   render()
   {
-    console.log(this.state.drinks);
     return (
       <Switch>
         <Route exact path={'/drinks'}>
-          <Kombucha kombuchas={this.state.drinks} />
+          <Kombucha kombuchas={this.state.drinks} stockRemoval={this.handleStockRemove}/>
         </Route>
         <Route exact path={'/drinks/new'}>
           <DrinkForm getFormValues={this.getFormValues} />

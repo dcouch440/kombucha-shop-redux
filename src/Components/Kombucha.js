@@ -64,23 +64,41 @@ const Drink = styled.button`
   }
 `
 
-const Kombucha = ({kombuchas}) => {
+const StockButton = styled.button`
+  z-index: 9998;
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+`
+
+const Kombucha = ({kombuchas, stockRemoval}) => {
 
   const [modal, setModal] = useState(false)
   const [show, setShow] = useState('');
 
-  const handleClick = (id) => {
-    id&& setShow(id);
-    setModal(prev => !prev);
+  const handleClick = (e, id) => {
+    if (e.target.name !== 'remove-stock')
+    {
+      id&& setShow(id);
+      setModal(prev => !prev);
+    }
+  }
+
+  const handleStockChange = (id) => {
+    stockRemoval(id)
   }
 
   const displayDrink = () => kombuchas.filter(drink => drink.id === show)[0]
 
   const kombuchaDisplay = kombuchas.map(drink => (
-    <Drink onClick={() => handleClick(drink.id)} >
+    <Drink onClick={(e) => handleClick(e,drink.id)} >
       <div className="name">{drink.name}</div>
       <div className="stock">In stock: {drink.stock}</div>
+
       <div className="drink">🥤</div>
+      <StockButton name="remove-stock" onClick={() => handleStockChange(drink.id)}>
+        One Sold
+      </StockButton>
     </Drink>
   ))
 
