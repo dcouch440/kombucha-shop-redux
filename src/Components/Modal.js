@@ -59,18 +59,28 @@ const CloseButton = styled.button`
   }
 `
 
-const Modal = ({drink, onClick}) =>(
-  <ModalDisplay>
-    <Message>
-      <div>Name: {drink.name}</div>
-      <div>Flavor: {drink.flavor}</div>
-      <div>Smell: {drink.smell}</div>
-      <div>Ingredients: {drink.ingredients}</div>
-      <div className="icon">💃</div>
-      <CloseButton onClick={onClick}>X</CloseButton>
-    </Message>
-  </ModalDisplay>
-)
+const Modal = ({drink, onClick, stockRemoval}) => {
+
+  const handleStockRemoval = (e) => {
+    stockRemoval(drink.id)
+  }
+
+  return (
+    <ModalDisplay>
+      <Message>
+        {console.log(stockRemoval)}
+        <div>Name: {drink.name}</div>
+        <div>Flavor: {drink.flavor}</div>
+        <div>Smell: {drink.smell}</div>
+        <div>Ingredients: {drink.ingredients}</div>
+        <div>Current Stock: {drink.stock}</div>
+        <div className="icon">💃</div>
+        <button onClick={handleStockRemoval}>Remove Stock</button>
+        <CloseButton onClick={onClick}>X</CloseButton>
+      </Message>
+    </ModalDisplay>
+  )
+}
 
 Modal.prototype = {
   drink: PropTypes.object,

@@ -31,7 +31,7 @@ const Drinks = styled.div`
   }
 `
 
-const Drink = styled.button`
+const Drink = styled.div`
   all: unset;
   color: white;
   font-family: monospace;
@@ -76,16 +76,10 @@ const Kombucha = ({kombuchas, stockRemoval}) => {
   const [modal, setModal] = useState(false)
   const [show, setShow] = useState('');
 
-  const handleClick = (e, id) => {
-    if (e.target.name !== 'remove-stock')
-    {
-      id&& setShow(id);
-      setModal(prev => !prev);
-    }
-  }
-
-  const handleStockChange = (id) => {
-    stockRemoval(id)
+  const handleClick = (e,id) => {
+    console.log(e.target)
+    id&& setShow(id);
+    setModal(prev => !prev);
   }
 
   const displayDrink = () => kombuchas.filter(drink => drink.id === show)[0]
@@ -94,11 +88,7 @@ const Kombucha = ({kombuchas, stockRemoval}) => {
     <Drink onClick={(e) => handleClick(e,drink.id)} >
       <div className="name">{drink.name}</div>
       <div className="stock">In stock: {drink.stock}</div>
-
       <div className="drink">🥤</div>
-      <StockButton name="remove-stock" onClick={() => handleStockChange(drink.id)}>
-        One Sold
-      </StockButton>
     </Drink>
   ))
 
@@ -109,7 +99,7 @@ const Kombucha = ({kombuchas, stockRemoval}) => {
           <Drinks>
             {kombuchaDisplay}
           </Drinks>
-          {modal && <Modal drink={ displayDrink() } onClick={handleClick} />}
+          {modal && <Modal drink={ displayDrink() } onClick={handleClick} stockRemoval={stockRemoval} />}
         </div>
       </KombuchaPage>
     </>
