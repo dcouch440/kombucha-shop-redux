@@ -8,7 +8,7 @@ const factory = (trait) => {
     smell: ['dark', 'strong', 'light'],
     ingredients: ['salt', 'sugar', 'apples', 'oranges'],
     price: ['$3.19', '$3.85', '$3.50', '$3.33', '$3.55'],
-    stock: [rand(150)]
+    stock: [rand(15)]
   }
 
   const length = traits[trait].length

@@ -1,13 +1,14 @@
+import React, { useContext } from 'react';
 import GlobalStyle from './GlobalStyle';
 import Shop from './Components/Shop';
-import { BrowserRouter as Router } from 'react-router-dom';
+import {Context} from './Context'
+
 function App() {
+  const {scrollBehavior} = useContext(Context)
   return (
     <>
-      <GlobalStyle />
-      <Router>
-        <Shop />
-      </Router>
+      <GlobalStyle stopScroll={scrollBehavior}/>
+      <Shop />
     </>
   );
 }

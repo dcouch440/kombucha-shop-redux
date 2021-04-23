@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Context } from '../Context'
 
 const KombuchaPage = styled.div`
   position: relative;
@@ -28,6 +28,10 @@ const Drinks = styled.div`
   @media (max-width: 1000px)
   {
     grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 700px)
+  {
+    grid-template-columns: repeat(1, 1fr);
   }
 `
 
@@ -64,28 +68,22 @@ const Drink = styled.div`
   }
 `
 
-const StockButton = styled.button`
-  z-index: 9998;
-  position: absolute;
-  right: 2%;
-  bottom: 2%;
-`
-
 const Kombucha = ({kombuchas, stockRemoval}) => {
 
   const [modal, setModal] = useState(false)
   const [show, setShow] = useState('');
+  const { setScrollBehavior } = useContext(Context);
 
   const handleClick = (e,id) => {
-    console.log(e.target)
     id&& setShow(id);
     setModal(prev => !prev);
+    setScrollBehavior(prev => !prev)
   }
 
   const displayDrink = () => kombuchas.filter(drink => drink.id === show)[0]
 
   const kombuchaDisplay = kombuchas.map(drink => (
-    <Drink onClick={(e) => handleClick(e,drink.id)} >
+    <Drink key={drink.id} onClick={(e) => handleClick(e,drink.id)} >
       <div className="name">{drink.name}</div>
       <div className="stock">In stock: {drink.stock}</div>
       <div className="drink">🥤</div>

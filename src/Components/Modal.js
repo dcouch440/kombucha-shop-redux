@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const ModalDisplay = styled.div`
   z-index: 999;
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,18 +45,42 @@ const Message = styled.div`
 `
 
 const CloseButton = styled.button`
+  font-family: arial !important;
+  font-weight: 100;
+  position: absolute;
   all: unset;
   cursor: pointer;
   color: white;
   position: absolute;
-  right: 5%;
+  right: 2%;
   top: 5%;
+  background-color: white;
+  color: black;
   padding: 5px;
-  border-radius: 25px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px black;
+  font-size: 20px;
   &:hover {
     background-color: white;
     color: black;
   }
+`
+
+const StockChange = styled.button`
+  font-family: arial !important;
+  font-weight: 100;
+  position: absolute;
+  all: unset;
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  right: 20%;
+  top: 5%;
+  background-color: white;
+  color: black;
+  padding: 5px;
+  box-shadow: inset 0 0 5px black;
+  font-size: 20px;
 `
 
 const Modal = ({drink, onClick, stockRemoval}) => {
@@ -65,18 +89,19 @@ const Modal = ({drink, onClick, stockRemoval}) => {
     stockRemoval(drink.id)
   }
 
+  const buttonText = drink.stock === 0 ? 'Out Of Stock' : 'Remove Stock'
+
   return (
     <ModalDisplay>
       <Message>
-        {console.log(stockRemoval)}
         <div>Name: {drink.name}</div>
         <div>Flavor: {drink.flavor}</div>
         <div>Smell: {drink.smell}</div>
         <div>Ingredients: {drink.ingredients}</div>
         <div>Current Stock: {drink.stock}</div>
         <div className="icon">💃</div>
-        <button onClick={handleStockRemoval}>Remove Stock</button>
-        <CloseButton onClick={onClick}>X</CloseButton>
+        <StockChange onClick={handleStockRemoval}>{buttonText}</StockChange>
+        <CloseButton onClick={onClick}>x</CloseButton>
       </Message>
     </ModalDisplay>
   )
