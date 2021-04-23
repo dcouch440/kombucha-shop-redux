@@ -7,7 +7,7 @@ class Shop extends Component {
   constructor(props)
   {
     super(props)
-    this.initialState = kombuchaMachine(6);
+    this.initialState = kombuchaMachine;
     this.state = {
       drinks: this.initialState
     };

@@ -1,3 +1,5 @@
+import { v4 } from 'uuid';
+
 const factory = (trait) => {
   const traits = {
     flavor: ['fermented', 'sour', 'fizzy', 'putrid', 'bright'],
@@ -10,12 +12,16 @@ const factory = (trait) => {
   return {[trait]: traits[trait][rand(length)]}
 }
 
-export const kombuchaMachine = howMany => [...Array(howMany)].map(
-  () => {
-    return {
-      ...factory('flavor'),
-      ...factory('smell'),
-      ...factory('ingredients')
-    }
-  }
-)
+const defaultDrinks = [
+  'The Drinkanator', 'Sunday Drink',
+  'Really Good', 'Not To Bad',
+  'Another Monday', 'Try It'
+]
+
+export const kombuchaMachine = defaultDrinks.map(drink => ({
+  name: drink,
+  id: v4(),
+  ...factory('flavor'),
+  ...factory('smell'),
+  ...factory('ingredients'),
+}))
