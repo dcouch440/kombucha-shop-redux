@@ -7,6 +7,7 @@ import { v4 } from 'uuid';
 const FormPage = styled.div`
   width: 100%;
   height: 100%;
+  background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19,7 +20,7 @@ const FormPage = styled.div`
 const Form = styled.form`
   font-family: monospace;
   display: flex;
-  color: black;
+  color: white;
   & > * {
     padding: 2px;
     margin: 0 2px;

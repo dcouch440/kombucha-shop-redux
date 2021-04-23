@@ -55,11 +55,9 @@ const CloseButton = styled.button`
   right: 2%;
   color: white;
   top: 5%;
-  padding: 0px 2px;
+  padding: 10px;
   border: 2px solid white;
-  border-radius: 50px;
-  box-shadow: inset 0 0 5px black;
-  font-size: 20px;
+  font-size: 25px;
   &:hover {
     background-color: white;
     color: black;
@@ -76,10 +74,14 @@ const StockChange = styled.button`
   position: absolute;
   right: 10%;
   top: 5%;
+  border: 2px solid white;
   color: white;
-  padding: 5px;
-  box-shadow: inset 0 0 5px black;
-  font-size: 20px;
+  padding: 15px;
+  font-size: 17px;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
 `;
 
 const Modal = ({drink, onClick, stockRemoval}) => {

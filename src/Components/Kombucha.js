@@ -8,6 +8,7 @@ const KombuchaPage = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  background-color: black;
   .position {
     position: absolute;
     width: 100%;
@@ -24,7 +25,7 @@ const Drinks = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 400px;
   grid-gap: 5px;
-  background-color: white;
+  background-color: black;
   @media (max-width: 1000px)
   {
     grid-template-columns: repeat(2, 1fr);
@@ -37,13 +38,13 @@ const Drinks = styled.div`
 
 const Drink = styled.div`
   all: unset;
-  color: white;
+  color: black;
   font-family: monospace;
   font-size: calc( 15px + .5vw);
   display: flex;
   text-align: bottom;
   padding: 20px;
-  background-color: black;
+  background-color: white;
   position: relative;
 
   .drink {
@@ -64,7 +65,11 @@ const Drink = styled.div`
     bottom: 5%;
   }
   &:hover {
-      background-color: dimgrey;
+    cursor: pointer;
+    background-color: #393939bf;
+    color: white;
+    box-shadow: inset 0 0 9px black;
+    transition: .2s;
   }
 `;
 
