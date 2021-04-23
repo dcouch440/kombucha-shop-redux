@@ -5,7 +5,8 @@ import { kombuchaMachine } from '../stock/stock-factory';
 import { Switch, Route } from 'react-router-dom';
 
 
-class Shop extends Component {
+class Shop extends Component
+{
   constructor(props)
   {
     super(props)
@@ -16,16 +17,17 @@ class Shop extends Component {
   }
 
   getFormValues = (newDrink) => {
+    console.log(newDrink)
     this.setState(prev => ({
       ...prev,
-      drinks: [...prev.drinks, ...newDrink]
+      drinks: [...prev.drinks, newDrink]
     }))
   }
 
   render()
   {
     console.log(this.state.drinks);
-    return(
+    return (
       <Switch>
         <Route exact path={'/drinks'}>
           <Kombucha kombuchas={this.state.drinks} />

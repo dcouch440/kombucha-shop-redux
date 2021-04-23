@@ -13,10 +13,10 @@ class DrinkForm extends Component
     super(props);
     this.state = {
       name: '',
+      id: v4(),
       flavor: '',
       smell: '',
       ingredients: '',
-      id: v4()
     };
 
     this.getFormValues = this.props.getFormValues;
@@ -37,7 +37,7 @@ class DrinkForm extends Component
   render()
   {
     return (
-      <form onSubmit={this.props.onSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <Input
           name="name"
           value={this.state.name}

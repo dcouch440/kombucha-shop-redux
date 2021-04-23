@@ -18,7 +18,7 @@ const Message = styled.div`
   position: relative;
   width: 60%;
   height: 60%;
-  font-size: 60px;
+  font-size: 40px;
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -32,6 +32,15 @@ const Message = styled.div`
     padding: 50px;
     font-size: 250px;
     text-decoration: underline;
+  }
+  @media (max-width: 1200px)
+  {
+    display: flex;
+    font-size: 30px;
+    .icon {
+      bottom: 5px;
+      font-size: 100px;
+    }
   }
 `
 

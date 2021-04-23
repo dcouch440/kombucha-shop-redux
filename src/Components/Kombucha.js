@@ -25,24 +25,39 @@ const Drinks = styled.div`
   grid-auto-rows: 400px;
   grid-gap: 5px;
   background-color: white;
+  @media (max-width: 1000px)
+  {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 
 const Drink = styled.button`
   all: unset;
   color: white;
   font-family: monospace;
-  font-size: 30px;
+  font-size: calc( 15px + .5vw);
   display: flex;
   text-align: bottom;
   padding: 20px;
   background-color: black;
   position: relative;
-  display: ${({display}) => display};
-  & .drink {
+
+  .drink {
     position: absolute;
-    bottom: 20px;
+    display: flex;
+    bottom: 25%;
     right: 20px;
-    font-size: 200px;
+    font-size: 160px;
+    @media (max-width: 1000px)
+    {
+      font-size: 100px;
+      right: unset;
+      left: unset;
+    }
+  }
+  .stock {
+    position: absolute;
+    bottom: 5%;
   }
   &:hover {
       background-color: dimgrey;
@@ -63,7 +78,9 @@ const Kombucha = ({kombuchas}) => {
 
   const kombuchaDisplay = kombuchas.map(drink => (
     <Drink onClick={() => handleClick(drink.id)} >
-      {drink.name} <div className={'drink'}>🥤</div>
+      <div className="name">{drink.name}</div>
+      <div className="stock">In stock: {drink.stock}</div>
+      <div className="drink">🥤</div>
     </Drink>
   ))
 
