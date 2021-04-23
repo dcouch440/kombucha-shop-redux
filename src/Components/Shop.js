@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Kombucha from './Kombucha';
 import DrinkForm from './DrinkForm';
 import styled from 'styled-components';
@@ -24,13 +24,13 @@ const LinkHub = styled.div`
     padding: 0 10px;
     margin: 0 15px;
   }
-`
+`;
 
 class Shop extends Component
 {
   constructor(props)
   {
-    super(props)
+    super(props);
     this.initialState = kombuchaMachine;
     this.state = {
       drinks: this.initialState
@@ -38,28 +38,27 @@ class Shop extends Component
   }
 
   getFormValues = (newDrink) => {
-    console.log(newDrink)
     this.setState(prev => ({
       ...prev,
       drinks: [...prev.drinks, newDrink]
-    }))
+    }));
   }
 
   handleStockChange = (id) => {
     const newState = [...this.state.drinks];
-    const findStock = (drink) => drink.id === id
+    const findStock = (drink) => drink.id === id;
     const indexOfDrink = this.state.drinks.findIndex(findStock);
-    const stateWeWant = {...newState[indexOfDrink]}
+    const stateWeWant = {...newState[indexOfDrink]};
     if (stateWeWant.stock === 0) return;
     const newStock = {
       ...stateWeWant,
       stock: stateWeWant.stock -= 1
-    }
+    };
     const newStockArray = [
       ...newState.slice(0, indexOfDrink),
       newStock,
       ...newState.slice(indexOfDrink + 1)
-    ]
+    ];
     this.setState(prev => ({
       ...prev,
       drinks: newStockArray
@@ -86,7 +85,7 @@ class Shop extends Component
           </Route>
         </Switch>
       </>
-    )
+    );
   }
 }
 

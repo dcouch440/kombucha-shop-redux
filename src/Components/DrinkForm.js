@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { v4 } from 'uuid';
 
@@ -23,6 +24,10 @@ const Form = styled.form`
     padding: 2px;
     margin: 0 2px;
   }
+  @media (max-width: 1200px)
+  {
+    flex-direction: column;
+  }
 `;
 
 const Dancer = styled.div`
@@ -30,9 +35,13 @@ const Dancer = styled.div`
   background-color: black;
   padding: 0px 20px;
   margin-bottom: 30px;
-`
+  @media (max-width: 1000px)
+  {
+    font-size: 250px;
+  }
+`;
 
-const Input = styled.input``
+const Input = styled.input``;
 
 class DrinkForm extends Component
 {
@@ -54,14 +63,14 @@ class DrinkForm extends Component
   handleSubmit = (e) => {
     e.preventDefault();
     this.getFormValues(this.state);
-    this.props.history.push('/drinks')
+    this.props.history.push('/drinks');
   }
 
   handleChange = (e) => {
     const {name, value} = e.target
     return this.setState({
       [name]: value
-    })
+    });
   }
 
   render()
@@ -100,8 +109,12 @@ class DrinkForm extends Component
           </button>
         </Form>
       </FormPage>
-    )
+    );
   }
 }
 
-export default withRouter(DrinkForm)
+DrinkForm.propTypes = {
+  getFormValues: PropTypes.func
+};
+
+export default withRouter(DrinkForm);

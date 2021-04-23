@@ -12,7 +12,7 @@ const ModalDisplay = styled.div`
   height: 100%;
   background-color: #00000073;
   color: whitesmoke;
-`
+`;
 
 const Message = styled.div`
   position: relative;
@@ -42,7 +42,7 @@ const Message = styled.div`
       font-size: 100px;
     }
   }
-`
+`;
 
 const CloseButton = styled.button`
   font-family: arial !important;
@@ -53,18 +53,18 @@ const CloseButton = styled.button`
   color: white;
   position: absolute;
   right: 2%;
+  color: white;
   top: 5%;
-  background-color: white;
-  color: black;
-  padding: 5px;
-  border-radius: 5px;
+  padding: 0px 2px;
+  border: 2px solid white;
+  border-radius: 50px;
   box-shadow: inset 0 0 5px black;
   font-size: 20px;
   &:hover {
     background-color: white;
     color: black;
   }
-`
+`;
 
 const StockChange = styled.button`
   font-family: arial !important;
@@ -74,22 +74,21 @@ const StockChange = styled.button`
   cursor: pointer;
   color: white;
   position: absolute;
-  right: 20%;
+  right: 10%;
   top: 5%;
-  background-color: white;
-  color: black;
+  color: white;
   padding: 5px;
   box-shadow: inset 0 0 5px black;
   font-size: 20px;
-`
+`;
 
 const Modal = ({drink, onClick, stockRemoval}) => {
 
   const handleStockRemoval = (e) => {
     stockRemoval(drink.id)
-  }
+  };
 
-  const buttonText = drink.stock === 0 ? 'Out Of Stock' : 'Remove Stock'
+  const buttonText = drink.stock === 0 ? 'Out Of Stock' : 'Remove Stock';
 
   return (
     <ModalDisplay>
@@ -104,12 +103,13 @@ const Modal = ({drink, onClick, stockRemoval}) => {
         <CloseButton onClick={onClick}>x</CloseButton>
       </Message>
     </ModalDisplay>
-  )
+  );
 }
 
-Modal.prototype = {
+Modal.propTypes = {
   drink: PropTypes.object,
   onClick: PropTypes.func,
-}
+  stockRemoval: PropTypes.func
+};
 
-export default Modal
+export default Modal;

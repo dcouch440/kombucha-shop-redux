@@ -17,8 +17,76 @@
 ### `Technology Used:`
 
 * React `17.0.2`
-* Styled-Components
+* Styled Components `5.2.3`
+* uuid `8.3.2`
+* React Router `5.2.0`
 
+## `Installation :`
+* Go to ( https://github.com/dcouch440/kombucha-shop ).
+
+*  Navigate to the code button on the Github website.\
+![Code button](src/img/readme/code.PNG)
+
+- Copy the HTTPS code by clicking the clipboard next to the link.
+
+- Within your Bash terminal navigate to your desired location by using cd fallowed by your desired directory.
+
+```bash
+ cd Desktop
+```
+
+- Once you have chosen your desired directory use the command.
+```bash
+git clone https://github.com/dcouch440/kombucha-shop.git
+```
+
+<div
+  style="
+    background-color: #d1ecf1;
+    color: grey; padding: 6px;
+    font-size: 9px;
+    border-radius: 5px;
+    border: 1px solid #d4ecf1;
+    margin-bottom: 12px"
+>
+  <span
+    style="
+      font-size: 12px;
+      font-weight: 600;
+      color: #0c5460;"
+  >
+    ⓘ
+  </span>
+  <span
+    style="
+      font-size: 12px;
+      font-weight: 900;
+      color: #0c5460;
+      margin-bottom: 24px"
+  >
+    Note :
+  </span>
+  If you have any problems make sure your HTTPS code is correct! The example above might not be the most recent HTTPS code!
+</div>
+
+* Then after the process is completed use the command.
+
+``` bash
+code .
+```
+
+From here with the project open type
+```
+npm i
+```
+Then
+```
+npm run start
+```
+
+# `Component Tree`
+
+![Code button](src/img/readme/Component-tree.PNG)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
 import PropTypes from 'prop-types';
-import { Context } from '../Context'
+import { Context } from '../Context';
 
 const KombuchaPage = styled.div`
   position: relative;
@@ -16,7 +16,7 @@ const KombuchaPage = styled.div`
     justify-content: center;
     align-items: center;
   }
-`
+`;
 
 const Drinks = styled.div`
   width: 80%;
@@ -33,7 +33,7 @@ const Drinks = styled.div`
   {
     grid-template-columns: repeat(1, 1fr);
   }
-`
+`;
 
 const Drink = styled.div`
   all: unset;
@@ -66,21 +66,21 @@ const Drink = styled.div`
   &:hover {
       background-color: dimgrey;
   }
-`
+`;
 
 const Kombucha = ({kombuchas, stockRemoval}) => {
 
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
   const [show, setShow] = useState('');
   const { setScrollBehavior } = useContext(Context);
 
   const handleClick = (e,id) => {
     id&& setShow(id);
     setModal(prev => !prev);
-    setScrollBehavior(prev => !prev)
+    setScrollBehavior(prev => !prev);
   }
 
-  const displayDrink = () => kombuchas.filter(drink => drink.id === show)[0]
+  const displayDrink = () => kombuchas.filter(drink => drink.id === show)[0];
 
   const kombuchaDisplay = kombuchas.map(drink => (
     <Drink key={drink.id} onClick={(e) => handleClick(e,drink.id)} >
@@ -101,11 +101,12 @@ const Kombucha = ({kombuchas, stockRemoval}) => {
         </div>
       </KombuchaPage>
     </>
-  )
+  );
 }
 
-Kombucha.prototype = {
-  kombuchas: PropTypes.array
-}
+Kombucha.propTypes = {
+  kombuchas: PropTypes.array,
+  stockRemoval: PropTypes.func,
+};
 
 export default Kombucha;
