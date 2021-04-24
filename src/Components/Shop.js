@@ -48,20 +48,20 @@ class Shop extends Component
   {
     return (
       <>
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/drinks" />
-            </Route>
-            <Route exact path={'/drinks'}>
-              <Kombucha
-                kombuchas={this.state.drinks}
-                stockRemoval={this.handleStockChange}
-              />
-            </Route>
-            <Route exact path={'/drinks/new'}>
-              <DrinkForm getFormValues={this.getFormValues} />
-            </Route>
-          </Switch>
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/drinks" />
+          </Route>
+          <Route exact path={'/drinks'}>
+            <Kombucha
+              kombuchas={this.state.drinks}
+              stockRemoval={this.handleStockChange}
+            />
+          </Route>
+          <Route exact path={'/drinks/new'}>
+            <DrinkForm getFormValues={this.getFormValues} />
+          </Route>
+        </Switch>
       </>
     );
   }
