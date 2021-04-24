@@ -8,16 +8,19 @@ const KombuchaPage = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+  margin-bottom: 100px;
   background-color: black;
   .position {
     position: absolute;
+    margin-top: 0;
+    margin-bottom: auto;
     width: 100%;
     height: 100%;
+    padding-top: 100px;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
-`;
+  `;
 
 const Drinks = styled.div`
   width: 80%;
@@ -46,7 +49,6 @@ const Drink = styled.div`
   padding: 20px;
   background-color: white;
   position: relative;
-
   .drink {
     position: absolute;
     display: flex;

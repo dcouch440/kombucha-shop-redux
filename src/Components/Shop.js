@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Kombucha from './Kombucha';
 import DrinkForm from './DrinkForm';
-import styled from 'styled-components';
 import { kombuchaMachine } from '../stock/stock-factory';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
