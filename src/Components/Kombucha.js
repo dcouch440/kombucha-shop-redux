@@ -20,7 +20,8 @@ const KombuchaPage = styled.div`
     display: flex;
     justify-content: center;
   }
-  `;
+
+`;
 
 const Drinks = styled.div`
   width: 80%;

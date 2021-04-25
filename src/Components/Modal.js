@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 const ModalDisplay = styled.div`
   z-index: 999;
   position: fixed;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
