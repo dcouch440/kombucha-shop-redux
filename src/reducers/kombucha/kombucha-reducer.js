@@ -3,40 +3,36 @@ import * as types from '../types';
 
 const kombuchaReducer = (state = initial, action) => {
   const { id, type, ...payload} = action;
-  console.log(id);
-  console.log(state)
   const switchObject =
   {
-
-    [types.addDrink]: () => ({...state, ...{
+    [types.ADD_DRINK]: () => ({...state, ...{
       [id]: {...payload, id}
     }}),
 
-    [types.removeDrink]: () => {
+    [types.REMOVE_DRINK]: () => {
       const prev = {...state};
       delete prev[id];
       return prev;
     },
 
-    [types.addStock]: () => ({ ...state, ...{
+    [types.ADD_STOCK]: () => ({ ...state, ...{
       [id] : {
         ...state[id],
         ...{stock: state[id].stock  += 1}
       }
     }}),
 
-    [types.removeStock]: () => ({ ...state, ...{
+    [types.REMOVE_STOCK]: () => ({ ...state, ...{
       [id] : {
         ...state[id],
         ...{stock: state[id].stock ? state[id].stock -= 1 : 0}
       }
     }}),
 
-    [types.noAction]: () => state
-
+    [types.DEFAULT]: () => state
   }
 
-  return (switchObject[type] || switchObject[types.noAction])()
+  return (switchObject[type] || switchObject[types.DEFAULT])()
 }
 
 export default kombuchaReducer;

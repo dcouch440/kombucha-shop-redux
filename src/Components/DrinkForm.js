@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as formActions from '../reducers/form/actions';
+import * as kombuchaActions from '../reducers/kombucha/actions';
 import { v4 } from 'uuid';
 
 const FormPage = styled.div`
@@ -44,78 +46,60 @@ const Dancer = styled.div`
 
 const Input = styled.input``;
 
-class DrinkForm extends Component
-{
-  constructor(props)
-  {
-    super(props);
-    this.state = {
-      name: '',
-      id: v4(),
-      stock: 15,
-      flavor: '',
-      smell: '',
-      ingredients: '',
-    };
 
-    this.getFormValues = this.props.getFormValues;
-  }
+const DrinkForm = (props) => {
 
-  handleSubmit = (e) => {
+  const {dispatch, formReducer :form} = props;
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.getFormValues(this.state);
-    this.props.history.push('/drinks');
+    dispatch(formActions.updateForm({input: 'id', value: v4()}));
+    dispatch(kombuchaActions.drinkAdded(form));
+    props.history.push('/drinks');
   }
 
-  handleChange = (e) => {
+  const handleChange = (e) => {
     const {name, value} = e.target
-    return this.setState({
-      [name]: value
-    });
+    dispatch(formActions.updateForm({input: name, value}))
   }
 
-  render()
-  {
-    return (
-      <FormPage>
-        <div className="dancer-title">Enter Your Drink</div>
-        <Dancer>💃</Dancer>
-        <Form onSubmit={this.handleSubmit}>
-          <label>Name</label>
-          <Input
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            />
-          <label>Flavor</label>
-          <Input
-            name="flavor"
-            value={this.state.flavor}
-            onChange={this.handleChange}
-            />
-          <label>Smell</label>
-          <Input
-            name="smell"
-            value={this.state.smell}
-            onChange={this.handleChange}
+  return (
+    <FormPage>
+      <div className="dancer-title">Enter Your Drink</div>
+      <Dancer>💃</Dancer>
+      <Form onSubmit={handleSubmit}>
+        <label>Name</label>
+        <Input
+          name="name"
+          value={form.name}
+          onChange={handleChange}
           />
-          <label>Ingredients</label>
-          <Input
-            name="ingredients"
-            value={this.state.ingredients}
-            onChange={this.handleChange}
-            />
-          <button type="submit">
-            Submit
-          </button>
-        </Form>
-      </FormPage>
-    );
-  }
+        <label>Flavor</label>
+        <Input
+          name="flavor"
+          value={form.flavor}
+          onChange={handleChange}
+          />
+        <label>Smell</label>
+        <Input
+          name="smell"
+          value={form.smell}
+          onChange={handleChange}
+        />
+        <label>Ingredients</label>
+        <Input
+          name="ingredients"
+          value={form.ingredients}
+          onChange={handleChange}
+          />
+        <button type="submit">
+          Submit
+        </button>
+      </Form>
+    </FormPage>
+  );
+
 }
 
-DrinkForm.propTypes = {
-  getFormValues: PropTypes.func
-};
 
-export default withRouter(DrinkForm);
+export default connect(state => state)(withRouter(DrinkForm));

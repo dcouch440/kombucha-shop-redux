@@ -44,7 +44,7 @@ const Message = styled.div`
     font-size: 30px;
     .icon {
       bottom: 5px;
-      font-size: 100px;
+      font-size: 85px;
     }
   }
 `;
@@ -60,29 +60,43 @@ const CloseButton = styled.button`
   right: 2%;
   color: white;
   top: 5%;
-  padding: 10px;
+  padding: 5px;
   border: 2px solid white;
-  font-size: 25px;
+  font-size: 12px;
   &:hover {
     background-color: white;
     color: black;
   }
 `;
 
-const StockChange = styled.button`
+const StockChangePlus = styled.button`
   font-family: arial !important;
   font-weight: 100;
-  position: absolute;
   all: unset;
   cursor: pointer;
   color: white;
-  position: absolute;
-  right: 10%;
+  right: 13%;
   top: 5%;
   border: 2px solid white;
   color: white;
-  padding: 15px;
-  font-size: 17px;
+  padding: 5px;
+  font-size: 10px;
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+`;
+const StockChangeMinus = styled.button`
+  font-family: arial !important;
+  font-weight: 100;
+  all: unset;
+  cursor: pointer;
+  color: white;
+  top: 5%;
+  border: 2px solid white;
+  color: white;
+  padding: 5px;
+  font-size: 10px;
   &:hover {
     background-color: white;
     color: black;
@@ -94,12 +108,7 @@ const Modal = ({drink, onClick, ...props}) => {
     dispatch,
   } = props
 
-  const buttonText = drink.stock === 0 ? 'Out Of Stock' : 'Remove Stock';
-
-  const handleStockChange = drink => {
-    console.log(drink)
-    dispatch(actions.stockRemoved(drink))
-  }
+  const currentStock = drink.stock === 0 ? 'Out Of Stock' : drink.stock;
 
   return (
     <ModalDisplay>
@@ -108,9 +117,12 @@ const Modal = ({drink, onClick, ...props}) => {
         <div>Flavor: {drink.flavor}</div>
         <div>Smell: {drink.smell}</div>
         <div>Ingredients: {drink.ingredients}</div>
-        <div>Current Stock: {drink.stock}</div>
+        <div>Current Stock: {currentStock}</div>
         <div className="icon">💃</div>
-        <StockChange onClick={() => handleStockChange(drink)}>{buttonText}</StockChange>
+        <div>
+          <StockChangePlus onClick={() => dispatch(actions.stockAdded(drink))}>Add Stock</StockChangePlus>
+          <StockChangeMinus onClick={() => dispatch(actions.stockRemoved(drink))}>Remove Stock</StockChangeMinus>
+        </div>
         <CloseButton onClick={onClick}>x</CloseButton>
       </Message>
     </ModalDisplay>
@@ -120,7 +132,6 @@ const Modal = ({drink, onClick, ...props}) => {
 Modal.propTypes = {
   drink: PropTypes.object,
   onClick: PropTypes.func,
-  stockRemoval: PropTypes.func
 };
 
 export default connect(state => state)(Modal);

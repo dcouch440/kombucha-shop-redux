@@ -6,16 +6,14 @@ const modalReducer = (state = initial, action) => {
 
   const switchObject =
   {
+    [types.TOGGLE_MODAL]: () => ({...state, ...{show: !state.show}}),
 
-    [types.modalToggled]: () => ({...state, ...{show: !state.show}}),
+    [types.SET_CURRENT_DRINK]: () => ({...state, ...{currentDrink: payload}}),
 
-    [types.currentDrink]: () => ({...state, ...{currentDrink: payload}}),
-
-    [types.noAction]: () => state
-
+    [types.DEFAULT]: () => state
   }
 
-  return (switchObject[type] || switchObject[types.noAction])()
+  return (switchObject[type] || switchObject[types.DEFAULT])()
 }
 
 export default modalReducer;

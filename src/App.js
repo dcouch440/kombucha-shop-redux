@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import GlobalStyle from './GlobalStyle';
 import Shop from './Components/Shop';
@@ -27,7 +27,7 @@ function App({show})
 {
   return (
     <>
-      { !show&&
+      {!show&&
         <LinkHub>
           <Link to={'/drinks/new'}>New Drinks</Link>
           <Link to={'/drinks'}> Drinks</Link>

@@ -1,9 +1,9 @@
 import * as types from '../types';
 
 export const modalToggled = () => ({
-  type: types.modalToggled
+  type: types.TOGGLE_MODAL
 });
 
 export const setCurrentDrink = payload => ({
-  type: types.currentDrink, ...payload
+  type: types.SET_CURRENT_DRINK, ...payload
 });
