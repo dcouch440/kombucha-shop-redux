@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { connect } from 'react-redux';
 import GlobalStyle from './GlobalStyle';
 import Shop from './Components/Shop';
 import styled from 'styled-components';
@@ -22,21 +23,20 @@ const LinkHub = styled.div`
   }
 `;
 
-function App()
+function App({show})
 {
-
   return (
     <>
-      { 
+      { !show&&
         <LinkHub>
           <Link to={'/drinks/new'}>New Drinks</Link>
           <Link to={'/drinks'}> Drinks</Link>
         </LinkHub>
       }
-      <GlobalStyle stopScroll={() => ''}/>
-      <Shop stopScroll={() => ''}/>
+      <GlobalStyle stopScroll={show}/>
+      <Shop stopScroll={show}/>
     </>
   );
 }
 
-export default App;
+export default connect(state => state.modalReducer)(App);

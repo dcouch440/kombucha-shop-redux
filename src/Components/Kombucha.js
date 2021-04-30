@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
 import PropTypes from 'prop-types';
@@ -79,12 +79,13 @@ const Drink = styled.div`
 `;
 //  USER REDUX HERE TO CALL FUNCTIONS TO INCREASE THE VALUE
 const Kombucha = props => {
-  console.log(props)
   const {
-    kombuchaReducer :kombuchas,
+    kombuchaReducer,
     modalReducer :modal,
     dispatch,
   } = props
+
+  const kombuchas = Object.values(kombuchaReducer);
 
   const handleClick = (e,drink) => {
     drink&& dispatch(modalActions.setCurrentDrink(drink));
@@ -112,9 +113,6 @@ const Kombucha = props => {
             <Modal
               drink={displayDrink()}
               onClick={handleClick}
-              stockRemoval={() => {
-                dispatch(kombuchaActions.stockRemoved(modal.currentDrink))
-              }}
             />
           }
         </div>

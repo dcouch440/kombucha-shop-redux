@@ -21,12 +21,17 @@ const defaultDrinks = [
   'Another Monday', 'Try It'
 ];
 
-export const initial = defaultDrinks.map(drink => ({
-  name: drink,
-  id: v4(),
-  ...factory('stock'),
-  ...factory('price'),
-  ...factory('flavor'),
-  ...factory('smell'),
-  ...factory('ingredients'),
-}));
+export const initial = {}
+
+defaultDrinks.forEach(drink => {
+  const id = v4();
+  initial[id] = {
+    name: drink,
+    id: id,
+    ...factory('stock'),
+    ...factory('price'),
+    ...factory('flavor'),
+    ...factory('smell'),
+    ...factory('ingredients'),
+  }
+});

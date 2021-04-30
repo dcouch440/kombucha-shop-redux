@@ -3,6 +3,8 @@ import * as types from '../types';
 
 const kombuchaReducer = (state = initial, action) => {
   const { id, type, ...payload} = action;
+  console.log(id);
+  console.log(state)
   const switchObject =
   {
 
@@ -26,7 +28,7 @@ const kombuchaReducer = (state = initial, action) => {
     [types.removeStock]: () => ({ ...state, ...{
       [id] : {
         ...state[id],
-        ...{stock: state[id].stock -= 1}
+        ...{stock: state[id].stock ? state[id].stock -= 1 : 0}
       }
     }}),
 

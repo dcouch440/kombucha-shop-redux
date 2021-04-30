@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import * as actions from '../reducers/kombucha/actions';
+import { connect } from 'react-redux';
 
 const ModalDisplay = styled.div`
   z-index: 999;
@@ -87,13 +89,17 @@ const StockChange = styled.button`
   }
 `;
 
-const Modal = ({drink, onClick, stockRemoval}) => {
-
-  const handleStockRemoval = (e) => {
-    stockRemoval(drink.id)
-  };
+const Modal = ({drink, onClick, ...props}) => {
+  const {
+    dispatch,
+  } = props
 
   const buttonText = drink.stock === 0 ? 'Out Of Stock' : 'Remove Stock';
+
+  const handleStockChange = drink => {
+    console.log(drink)
+    dispatch(actions.stockRemoved(drink))
+  }
 
   return (
     <ModalDisplay>
@@ -104,7 +110,7 @@ const Modal = ({drink, onClick, stockRemoval}) => {
         <div>Ingredients: {drink.ingredients}</div>
         <div>Current Stock: {drink.stock}</div>
         <div className="icon">💃</div>
-        <StockChange onClick={handleStockRemoval}>{buttonText}</StockChange>
+        <StockChange onClick={() => handleStockChange(drink)}>{buttonText}</StockChange>
         <CloseButton onClick={onClick}>x</CloseButton>
       </Message>
     </ModalDisplay>
@@ -117,4 +123,4 @@ Modal.propTypes = {
   stockRemoval: PropTypes.func
 };
 
-export default Modal;
+export default connect(state => state)(Modal);
