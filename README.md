@@ -84,7 +84,7 @@ npm run start
 
 # `Component Tree`
 
-![Code button](src/img/readme/Component-Schema.PNG)
+<img src="src/img/readme/Component-schema.PNG" />
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
