@@ -3,6 +3,7 @@ import * as types from '../types';
 
 const kombuchaReducer = (state = initial, action) => {
   const { id, type, ...payload} = action;
+
   const switchObject =
   {
     [types.ADD_DRINK]: () => ({...state, ...{
