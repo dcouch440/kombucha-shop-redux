@@ -1,10 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import * as actions from '../reducers/kombucha/actions';
-import { connect } from 'react-redux';
 
-const ModalDisplay = styled.div`
+export const ModalDisplay = styled.div`
   z-index: 999;
   position: fixed;
   top: 0px;
@@ -19,7 +15,7 @@ const ModalDisplay = styled.div`
   color: whitesmoke;
 `;
 
-const Message = styled.div`
+export const Message = styled.div`
   position: relative;
   width: 60%;
   height: 60%;
@@ -49,7 +45,7 @@ const Message = styled.div`
   }
 `;
 
-const CloseButton = styled.button`
+export const CloseButton = styled.button`
   font-family: arial !important;
   font-weight: 100;
   position: absolute;
@@ -69,7 +65,7 @@ const CloseButton = styled.button`
   }
 `;
 
-const StockChangePlus = styled.button`
+export const StockChangePlus = styled.button`
   font-family: arial !important;
   font-weight: 100;
   all: unset;
@@ -86,7 +82,7 @@ const StockChangePlus = styled.button`
     color: black;
   }
 `;
-const StockChangeMinus = styled.button`
+export const StockChangeMinus = styled.button`
   font-family: arial !important;
   font-weight: 100;
   all: unset;
@@ -102,36 +98,3 @@ const StockChangeMinus = styled.button`
     color: black;
   }
 `;
-
-const Modal = ({drink, onClick, ...props}) => {
-  const {
-    dispatch,
-  } = props
-
-  const currentStock = drink.stock === 0 ? 'Out Of Stock' : drink.stock;
-
-  return (
-    <ModalDisplay>
-      <Message>
-        <div>Name: {drink.name}</div>
-        <div>Flavor: {drink.flavor}</div>
-        <div>Smell: {drink.smell}</div>
-        <div>Ingredients: {drink.ingredients}</div>
-        <div>Current Stock: {currentStock}</div>
-        <div className="icon">💃</div>
-        <div>
-          <StockChangePlus onClick={() => dispatch(actions.stockAdded(drink))}>Add Stock</StockChangePlus>
-          <StockChangeMinus onClick={() => dispatch(actions.stockRemoved(drink))}>Remove Stock</StockChangeMinus>
-        </div>
-        <CloseButton onClick={onClick}>x</CloseButton>
-      </Message>
-    </ModalDisplay>
-  );
-}
-
-Modal.propTypes = {
-  drink: PropTypes.object,
-  onClick: PropTypes.func,
-};
-
-export default connect(state => state)(Modal);

@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
     height: 100vh;
     margin: 0;
     height: 0;
-      
 	}
 	body {
     overflow: ${({stopScroll}) => stopScroll && 'hidden'};
