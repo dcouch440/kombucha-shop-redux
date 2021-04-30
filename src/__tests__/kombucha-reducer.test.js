@@ -3,8 +3,6 @@ import * as actions from '../reducers/kombucha/actions';
 
 describe('kombuchaReducer', () => {
 
-  const init = {};
-
   const payload = {
     name: 'drink',
     id: 1,
@@ -30,7 +28,7 @@ describe('kombuchaReducer', () => {
 
   it('should add stock', () => {
     expect(kombuchaReducer({[id] : {...payload }}, actions.stockAdded(payload)))
-      .toEqual({[id] : {...payload, ...{ stock: 1 }}});
+      .toEqual({ [id] : {...payload, ...{ stock: 1 }} });
   });
 
   it('should remove stock', () => {
