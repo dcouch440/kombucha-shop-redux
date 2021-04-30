@@ -12,7 +12,7 @@ const Kombucha = ({kombuchaReducer, modalReducer :modal, dispatch}) => {
   const handleClick = (e, drink) => {
     drink&& dispatch(modalActions.setCurrentDrink(drink));
     dispatch(modalActions.modalToggled())
-  }
+  };
 
   const displayDrink = () => kombuchas.filter(drink => drink.id === modal.currentDrink.id)[0];
 
@@ -22,7 +22,7 @@ const Kombucha = ({kombuchaReducer, modalReducer :modal, dispatch}) => {
       <div className="stock">In stock: {drink.stock}</div>
       <div className="drink">🥤</div>
     </Drink>
-  ))
+  ));
 
   return (
     <>
@@ -36,7 +36,7 @@ const Kombucha = ({kombuchaReducer, modalReducer :modal, dispatch}) => {
       </KombuchaPage>
     </>
   );
-}
+};
 
 Kombucha.propTypes = {
   kombuchaReducer: PropTypes.object,

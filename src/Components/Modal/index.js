@@ -24,7 +24,7 @@ const Modal = ({dispatch, drink, onClick}) => (
       <CloseButton onClick={onClick}>x</CloseButton>
     </Message>
   </ModalDisplay>
-)
+);
 
 Modal.propTypes = {
   drink: PropTypes.object,

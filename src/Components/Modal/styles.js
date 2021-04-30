@@ -82,6 +82,7 @@ export const StockChangePlus = styled.button`
     color: black;
   }
 `;
+
 export const StockChangeMinus = styled.button`
   font-family: arial !important;
   font-weight: 100;

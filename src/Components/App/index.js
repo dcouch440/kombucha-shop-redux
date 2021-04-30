@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import GlobalStyle from '../../GlobalStyle';
 import PropTypes from 'prop-types';
 import Shop from '../Shop';
-import {LinkHub} from './styles';
+import { LinkHub } from './styles';
 import { Link } from 'react-router-dom';
 
 
@@ -18,11 +18,11 @@ const App = ({show}) => (
     <GlobalStyle stopScroll={show}/>
     <Shop stopScroll={show}/>
   </>
-)
+);
 
 
 App.propTypes = {
-  drink: PropTypes.bool,
+  show: PropTypes.bool,
 };
 
 export default connect(state => state.modalReducer)(App);

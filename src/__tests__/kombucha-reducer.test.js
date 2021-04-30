@@ -22,10 +22,6 @@ describe('kombuchaReducer', () => {
     expect(kombuchaReducer({}, actions.drinkAdded(payload))).toEqual({ [id]:{ ...payload } });
   });
 
-  it('Should delete a drink', () => {
-    expect(kombuchaReducer({[id]: payload}, actions.drinkRemoved(payload))).toEqual({});
-  });
-
   it('should add stock', () => {
     expect(kombuchaReducer({[id] : {...payload }}, actions.stockAdded(payload)))
       .toEqual({ [id] : {...payload, ...{ stock: 1 }} });

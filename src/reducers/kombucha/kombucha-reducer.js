@@ -1,4 +1,4 @@
-import {initial} from './initial';
+import { initial } from './initial';
 import * as types from '../types';
 
 const kombuchaReducer = (state = initial, action) => {
@@ -9,12 +9,6 @@ const kombuchaReducer = (state = initial, action) => {
     [types.ADD_DRINK]: () => ({...state, ...{
       [id]: {...payload, id}
     }}),
-
-    [types.REMOVE_DRINK]: () => {
-      const prev = {...state};
-      delete prev[id];
-      return prev;
-    },
 
     [types.ADD_STOCK]: () => ({ ...state, ...{
       [id] : {
@@ -31,9 +25,9 @@ const kombuchaReducer = (state = initial, action) => {
     }}),
 
     [types.DEFAULT]: () => state
-  }
+  };
 
-  return (switchObject[type] || switchObject[types.DEFAULT])()
-}
+  return (switchObject[type] || switchObject[types.DEFAULT])();
+};
 
 export default kombuchaReducer;

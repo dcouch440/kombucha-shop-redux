@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory, withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as formActions from '../../reducers/form/actions';
 import * as kombuchaActions from '../../reducers/kombucha/actions';
@@ -8,20 +8,20 @@ import { v4 } from 'uuid';
 import { Form, FormPage, Dancer, Input } from './styles';
 
 const DrinkForm = ({formReducer :form, dispatch}) => {
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(formActions.updateForm({input: 'id', value: v4()}));
     dispatch(kombuchaActions.drinkAdded(form));
     dispatch(formActions.clearForm());
-    history.push('/drinks')
-  }
+    history.push('/drinks');
+  };
 
   const handleChange = e => {
-    const {name, value} = e.target
-    dispatch(formActions.updateForm({input: name, value}))
-  }
+    const {name, value} = e.target;
+    dispatch(formActions.updateForm({input: name, value}));
+  };
 
   return (
     <FormPage>
@@ -63,11 +63,11 @@ const DrinkForm = ({formReducer :form, dispatch}) => {
     </FormPage>
   );
 
-}
+};
 
 DrinkForm.propTypes = {
   formReducer: PropTypes.object,
   dispatch: PropTypes.func,
 };
 
-export default connect(state => state)(withRouter(DrinkForm));
+export default connect(state => state)(DrinkForm);

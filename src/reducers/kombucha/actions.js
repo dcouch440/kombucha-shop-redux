@@ -11,7 +11,3 @@ export const stockRemoved = payload => ({
 export const drinkAdded = payload => ({
   type: types.ADD_DRINK, ...payload
 });
-
-export const drinkRemoved = payload => ({
-  type: types.REMOVE_DRINK, ...payload
-});

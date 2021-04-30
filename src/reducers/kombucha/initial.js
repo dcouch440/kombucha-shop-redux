@@ -13,7 +13,7 @@ const factory = (trait) => {
 
   const length = traits[trait].length;
   return {[trait]: traits[trait][rand(length)]};
-}
+};
 
 const defaultDrinks = [
   'The Drinkanator', 'Sunday Drink',
@@ -21,7 +21,7 @@ const defaultDrinks = [
   'Another Monday', 'Try It'
 ];
 
-export const initial = {}
+export const initial = {};
 
 defaultDrinks.forEach(drink => {
   const id = v4();
