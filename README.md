@@ -1,18 +1,14 @@
 # `Kombucha Shop`
 
-### A Shop For Kombucha!
-<!-- To Do
-  Update List of tech
-  create list for components
- -->
+### A Redux Shop For Kombucha!
+
 ## `Date created`
-#### 4/23/2021
+#### 4/30/2021
 
 ***
 ## `About this App`
-- This is a week 2 React Project while attending school at Epicodus
-- This project is created to explore the fundamentals of passing props down while using prop types.
-- Users can see unique data for each drink and add new entries.
+- This is a week 3 React Project while attending school at Epicodus
+- This is a refactor project made to exchange local state for redux
 ***
 ### `Technology Used:`
 
@@ -20,9 +16,11 @@
 * Styled Components `5.2.3`
 * uuid `8.3.2`
 * React Router `5.2.0`
+* Redux `4.1.0`
+* React Redux `4.1.0`
 
 ## `Installation :`
-* Go to ( https://github.com/dcouch440/kombucha-shop ).
+* Go to ( https://github.com/dcouch440/kombucha-shop-redux ).
 
 *  Navigate to the code button on the Github website.\
 ![Code button](src/img/readme/code.PNG)
@@ -37,7 +35,7 @@
 
 - Once you have chosen your desired directory use the command.
 ```bash
-git clone https://github.com/dcouch440/kombucha-shop.git
+git clone https://github.com/dcouch440/kombucha-shop-redux.git
 ```
 
 <div
@@ -86,7 +84,7 @@ npm run start
 
 # `Component Tree`
 
-![Code button](src/img/readme/Component-tree.PNG)
+![Code button](src/img/readme/Component-Schema.PNG)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

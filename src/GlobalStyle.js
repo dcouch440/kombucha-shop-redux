@@ -11,7 +11,7 @@ const GlobalStyle = createGlobalStyle`
     height: 0;
 	}
 	body {
-    overflow: ${({stopScroll}) => stopScroll && 'hidden'};
+      overflow: ${({stopScroll}) => stopScroll && 'hidden'};
 	}
 	#root {
     overflow: auto;
