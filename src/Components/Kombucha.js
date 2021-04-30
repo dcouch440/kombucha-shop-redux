@@ -75,7 +75,7 @@ const Drink = styled.div`
     transition: .2s;
   }
 `;
-
+//  USER REDUX HERE TO CALL FUNCTIONS TO INCREASE THE VALUE
 const Kombucha = ({kombuchas, stockRemoval}) => {
 
   const [modal, setModal] = useState(false);

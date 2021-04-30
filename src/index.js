@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducers from './reducers/combine-reducers';
 import { BrowserRouter } from 'react-router-dom';
-import {ContextProvider as Provider} from './Context';
 import reportWebVitals from './reportWebVitals';
+const store = createStore(reducers);
 
 ReactDOM.render(
     <BrowserRouter>
-      <Provider>
+      <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>,
