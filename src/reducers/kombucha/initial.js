@@ -21,7 +21,7 @@ const defaultDrinks = [
   'Another Monday', 'Try It'
 ];
 
-export const kombuchaMachine = defaultDrinks.map(drink => ({
+export const initial = defaultDrinks.map(drink => ({
   name: drink,
   id: v4(),
   ...factory('stock'),

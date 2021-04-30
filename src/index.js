@@ -8,6 +8,10 @@ import { BrowserRouter } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 const store = createStore(reducers);
 
+store.subscribe(() => {
+  console.log(store.getState());
+});
+
 ReactDOM.render(
     <BrowserRouter>
       <Provider store={store}>

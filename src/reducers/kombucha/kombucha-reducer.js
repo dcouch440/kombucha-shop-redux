@@ -1,4 +1,4 @@
-import initial from './initial';
+import {initial} from './initial';
 import * as types from '../types';
 
 const kombuchaReducer = (state = initial, action) => {

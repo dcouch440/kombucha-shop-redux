@@ -2,7 +2,9 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
 import PropTypes from 'prop-types';
-import { Context } from '../Context';
+import * as kombuchaActions from '../reducers/kombucha/actions';
+import * as modalActions from '../reducers/modal/actions';
+import { connect } from 'react-redux';
 
 const KombuchaPage = styled.div`
   position: relative;
@@ -76,22 +78,23 @@ const Drink = styled.div`
   }
 `;
 //  USER REDUX HERE TO CALL FUNCTIONS TO INCREASE THE VALUE
-const Kombucha = ({kombuchas, stockRemoval}) => {
+const Kombucha = props => {
+  console.log(props)
+  const {
+    kombuchaReducer :kombuchas,
+    modalReducer :modal,
+    dispatch,
+  } = props
 
-  const [modal, setModal] = useState(false);
-  const [show, setShow] = useState('');
-  const { setScrollBehavior } = useContext(Context);
-
-  const handleClick = (e,id) => {
-    id&& setShow(id);
-    setModal(prev => !prev);
-    setScrollBehavior(prev => !prev);
+  const handleClick = (e,drink) => {
+    drink&& dispatch(modalActions.setCurrentDrink(drink));
+    dispatch(modalActions.modalToggled())
   }
 
-  const displayDrink = () => kombuchas.filter(drink => drink.id === show)[0];
+  const displayDrink = () => kombuchas.filter(drink => drink.id === modal.currentDrink.id)[0];
 
   const kombuchaDisplay = kombuchas.map(drink => (
-    <Drink key={drink.id} onClick={(e) => handleClick(e,drink.id)} >
+    <Drink key={drink.id} onClick={(e) => handleClick(e, drink)} >
       <div className="name">{drink.name}</div>
       <div className="stock">In stock: {drink.stock}</div>
       <div className="drink">🥤</div>
@@ -105,7 +108,15 @@ const Kombucha = ({kombuchas, stockRemoval}) => {
           <Drinks>
             {kombuchaDisplay}
           </Drinks>
-          {modal && <Modal drink={ displayDrink() } onClick={handleClick} stockRemoval={stockRemoval} />}
+          {modal.show &&
+            <Modal
+              drink={displayDrink()}
+              onClick={handleClick}
+              stockRemoval={() => {
+                dispatch(kombuchaActions.stockRemoved(modal.currentDrink))
+              }}
+            />
+          }
         </div>
       </KombuchaPage>
     </>
@@ -117,4 +128,4 @@ Kombucha.propTypes = {
   stockRemoval: PropTypes.func,
 };
 
-export default Kombucha;
+export default connect(state => state)(Kombucha);

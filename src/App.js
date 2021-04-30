@@ -3,7 +3,6 @@ import GlobalStyle from './GlobalStyle';
 import Shop from './Components/Shop';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import {Context} from './Context';
 
 const LinkHub = styled.div`
   z-index: 99999;
@@ -25,18 +24,17 @@ const LinkHub = styled.div`
 
 function App()
 {
-  const {scrollBehavior} = useContext(Context);
 
   return (
     <>
-      { !scrollBehavior &&
+      { 
         <LinkHub>
           <Link to={'/drinks/new'}>New Drinks</Link>
           <Link to={'/drinks'}> Drinks</Link>
         </LinkHub>
       }
-      <GlobalStyle stopScroll={scrollBehavior}/>
-      <Shop stopScroll={scrollBehavior}/>
+      <GlobalStyle stopScroll={() => ''}/>
+      <Shop stopScroll={() => ''}/>
     </>
   );
 }

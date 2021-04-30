@@ -16,7 +16,7 @@ const Shop  = () => {
           <Kombucha />
         </Route>
         <Route exact path={'/drinks/new'}>
-          <DrinkForm getFormValues={this.getFormValues} />
+          <DrinkForm getFormValues={() => ('sdf')} />
         </Route>
       </Switch>
     </>
