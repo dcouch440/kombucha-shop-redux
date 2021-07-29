@@ -16,15 +16,15 @@ describe('formReducer', () => {
 
     ['name', 'flavor', 'smell', 'ingredients'].forEach(name  => {
       it('should update the given value', () => {
-        expect(formReducer(initial, actions.updateForm({input: name, value: 'Updated'})))
-          .toEqual({...initial, ...{[name]: 'Updated'}});
+        expect(formReducer(initial, actions.updateForm({ input: name, value: 'Updated' })))
+          .toEqual({ ...initial, ...{ [name]: 'Updated' } });
       });
     });
 
   });
 
   it('resets the value', () => {
-    expect(formReducer({cats: 'lol'}, actions.clearForm())).toEqual(initial);
+    expect(formReducer({ cats: 'lol' }, actions.clearForm())).toEqual(initial);
   });
 
 });

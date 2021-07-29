@@ -15,7 +15,7 @@ describe('kombuchaReducer', () => {
   const { id } = payload;
 
   it('Should return and empty object if no action is passed in', () => {
-    expect(kombuchaReducer({}, {type: null})).toEqual({});
+    expect(kombuchaReducer({}, { type: null })).toEqual({});
   });
 
   it('Should add a new drink', () => {
@@ -23,13 +23,13 @@ describe('kombuchaReducer', () => {
   });
 
   it('should add stock', () => {
-    expect(kombuchaReducer({[id] : {...payload }}, actions.stockAdded(payload)))
-      .toEqual({ [id] : {...payload, ...{ stock: 1 }} });
+    expect(kombuchaReducer({ [id] : { ...payload } }, actions.stockAdded(payload)))
+      .toEqual({ [id] : { ...payload, ...{ stock: 1 } } });
   });
 
   it('should remove stock', () => {
-    expect(kombuchaReducer({[id]:{...payload, ...{ stock: 1 }}}, actions.stockRemoved(payload)))
-      .toEqual({ [id] : {...payload, ...{ stock: 0 }} });
+    expect(kombuchaReducer({ [id]:{ ...payload, ...{ stock: 1 } } }, actions.stockRemoved(payload)))
+      .toEqual({ [id] : { ...payload, ...{ stock: 0 } } });
   });
 
 });

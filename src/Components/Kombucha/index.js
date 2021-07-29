@@ -3,21 +3,21 @@ import Modal from '../Modal';
 import PropTypes from 'prop-types';
 import * as modalActions from '../../reducers/modal/actions';
 import { connect } from 'react-redux';
-import { KombuchaPage, Drink, Drinks} from './styles'
+import { KombuchaPage, Drink, Drinks } from './styles';
 
-const Kombucha = ({kombuchaReducer, modalReducer :modal, dispatch}) => {
+const Kombucha = ({ kombuchaReducer, modalReducer :modal, dispatch }) => {
 
   const kombuchas = Object.values(kombuchaReducer);
 
   const handleClick = (e, drink) => {
     drink&& dispatch(modalActions.setCurrentDrink(drink));
-    dispatch(modalActions.modalToggled())
+    dispatch(modalActions.modalToggled());
   };
 
   const displayDrink = () => kombuchas.filter(drink => drink.id === modal.currentDrink.id)[0];
 
   const kombuchaDisplay = kombuchas.map(drink => (
-    <Drink key={drink.id} onClick={(e) => handleClick(e, drink)} >
+    <Drink key={drink.id} onClick={e => handleClick(e, drink)} >
       <div className="name">{drink.name}</div>
       <div className="stock">In stock: {drink.stock}</div>
       <div className="drink">🥤</div>

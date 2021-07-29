@@ -6,7 +6,7 @@ import {
   ModalDisplay, Message, StockChangePlus, StockChangeMinus, CloseButton
 } from './styles';
 
-const Modal = ({dispatch, drink, onClick}) => (
+const Modal = ({ dispatch, drink, onClick }) => (
   <ModalDisplay>
     <Message>
       <div>Name: {drink.name}</div>

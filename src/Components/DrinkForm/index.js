@@ -7,20 +7,20 @@ import { connect } from 'react-redux';
 import { v4 } from 'uuid';
 import { Form, FormPage, Dancer, Input } from './styles';
 
-const DrinkForm = ({formReducer :form, dispatch}) => {
+const DrinkForm = ({ formReducer :form, dispatch }) => {
   const history = useHistory();
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(formActions.updateForm({input: 'id', value: v4()}));
+    dispatch(formActions.updateForm({ input: 'id', value: v4() }));
     dispatch(kombuchaActions.drinkAdded(form));
     dispatch(formActions.clearForm());
     history.push('/drinks');
   };
 
   const handleChange = e => {
-    const {name, value} = e.target;
-    dispatch(formActions.updateForm({input: name, value}));
+    const { name, value } = e.target;
+    dispatch(formActions.updateForm({ input: name, value }));
   };
 
   return (

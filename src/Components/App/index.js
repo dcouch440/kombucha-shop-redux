@@ -7,7 +7,7 @@ import { LinkHub } from './styles';
 import { Link } from 'react-router-dom';
 
 
-const App = ({show}) => (
+const App = ({ show }) => (
   <>
     {!show&&
       <LinkHub>

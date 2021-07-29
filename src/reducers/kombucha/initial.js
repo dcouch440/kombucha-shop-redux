@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 
-const factory = (trait) => {
-  const rand = (number) => Math.floor(Math.random() * number);
+const factory = trait => {
+  const rand = number => Math.floor(Math.random() * number);
 
   const traits = {
     flavor: ['fermented', 'sour', 'fizzy', 'putrid', 'bright'],
@@ -12,13 +12,16 @@ const factory = (trait) => {
   };
 
   const length = traits[trait].length;
-  return {[trait]: traits[trait][rand(length)]};
+  return { [trait]: traits[trait][rand(length)] };
 };
 
 const defaultDrinks = [
-  'The Drinkanator', 'Sunday Drink',
-  'Really Good', 'Not To Bad',
-  'Another Monday', 'Try It'
+  'The Drinkanator',
+  'Sunday Drink',
+  'Really Good',
+  'Not To Bad',
+  'Another Monday',
+  'Try It'
 ];
 
 export const initial = {};
@@ -33,5 +36,5 @@ defaultDrinks.forEach(drink => {
     ...factory('flavor'),
     ...factory('smell'),
     ...factory('ingredients'),
-  }
+  };
 });
